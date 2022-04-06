@@ -19,6 +19,16 @@ describe('Search for books', () => {
         page.placeOrder('50','35.80')
     })
 
+    it('User should be able to order 50 Harry Potter fiction books', () => {
+
+        page.checkRadioButton1("Fiction")
+        page.getSelectedBooks("Harry Potter")
+        cy.get('input[name="submit"]').click()
+        //validator.validateNumberOfUnits()
+        //validator.validatePrice()
+        page.placeOrderDiscount('50','40','10.5')
+    })
+
     it('User should be able to order a drama called \“The Rainbow”', () => {
           page.checkRadioButton1("Drama")
           page.getSelectedBooks("The Rainbow")
@@ -36,6 +46,7 @@ describe('Search for books', () => {
             //cy.get('[type="button"]').contains('Yes, Delete it!').click()
            });
         }
+
     })
   })
 })
